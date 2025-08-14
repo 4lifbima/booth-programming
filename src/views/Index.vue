@@ -19,7 +19,7 @@
                 
                 <div class="flex justify-center space-x-3 mb-6">
                     <div class="glass justify-center flex rounded-full px-6 py-3 text-blue-200">
-                        <i class="fas fa-code mr-2 mt-1 lg:text-xs text-md"></i> Coding
+                        <i class="fas fa-code mr-2 mt-1 lg:text-xs text-md"></i> Website
                     </div>
                     <div class="glass justify-center flex   rounded-full px-6 py-3 text-blue-200">
                         <i class="fas fa-robot mr-2 mt-1 lg:text-xs text-md"></i> AI
