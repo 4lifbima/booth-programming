@@ -24,7 +24,13 @@
             class="w-8 h-8 rounded-full bg-slate-300 border-2 border-white dark:border-slate-900"
           ></div>
         </div>
-        <span class="text-xs font-semibold text-slate-400 group-hover:translate-x-1 transition-transform">Lihat Detail &rarr;</span>
+        <a 
+          :href="project.link" 
+          target="_blank" 
+          class="px-3 py-1 bg-ksl-primary text-white text-xs font-semibold rounded-full hover:opacity-90 transition-opacity"
+        >
+          Visit
+        </a>
       </div>
     </div>
   </div>

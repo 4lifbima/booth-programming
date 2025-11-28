@@ -18,7 +18,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-          <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" @click="toggleTheme">
+          <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
             <i data-lucide="moon" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
             <i data-lucide="sun" class="w-5 h-5 block dark:hidden text-orange-500"></i>
           </button>
@@ -297,17 +297,6 @@
 import { ref, onMounted, onUpdated } from 'vue'
 import ProjectCard from './ProjectCard.vue'
 
-// Theme toggle function
-const toggleTheme = () => {
-  const htmlElement = document.documentElement
-  htmlElement.classList.toggle('dark')
-  if (htmlElement.classList.contains('dark')) {
-    localStorage.theme = 'dark'
-  } else {
-    localStorage.theme = 'light'
-  }
-}
-
 // Sample project data
 const projects = ref([
   {
@@ -315,14 +304,16 @@ const projects = ref([
     description: "Aplikasi pembelajaran coding yang interaktif dan mudah digunakan, dan quiz yang membantu pengguna belajar coding dengan cara yang menyenangkan.",
     image: "/coders.png",
     category: "Mobile App",
-    team: 1
+    team: 1,
+    link: "https://coders-prog.vercel.app/"
   },
   {
     title: "Website KSL-UNG",
     description: "Website resmi KSL-UNG yang menampilkan berbagai informasi dan sebagai sarana pendaftaran bagi mahasiswa baru.",
     image: "/webksl.png",
     category: "Web Development",
-    team: 4
+    team: 4,
+    link: "https://kslung.com/"
   }
 ])
 
@@ -332,16 +323,32 @@ const timelineChart = ref(null)
 
 // Initialize icons
 onMounted(() => {
-  // Check for saved theme preference or respect OS setting
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-
   // Initialize Lucide icons
   if (window.lucide) {
     window.lucide.createIcons()
+  }
+
+  // Theme Toggle Logic
+  const themeToggleBtn = document.getElementById('theme-toggle')
+  const htmlElement = document.documentElement
+
+  // Check local storage or system preference
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    htmlElement.classList.add('dark')
+  } else {
+    htmlElement.classList.remove('dark')
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      htmlElement.classList.toggle('dark')
+      if (htmlElement.classList.contains('dark')) {
+        localStorage.theme = 'dark'
+      } else {
+        localStorage.theme = 'light'
+      }
+      // Update charts on theme change if necessary (optional reload)
+    })
   }
 
   // Initialize charts
