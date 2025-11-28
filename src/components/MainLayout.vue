@@ -281,7 +281,7 @@
             <a href="#" class="hover:text-ksl-primary">Instagram</a>
             <a href="#" class="hover:text-ksl-primary">GitHub</a>
             <a href="#" class="hover:text-ksl-primary">LinkedIn</a>
-            <a href="#" class="hover:text-ksl-primary">Website Utama</a>
+            <a href="https://kslung.com/" class="hover:text-ksl-primary">Website Utama</a>
           </div>
         </div>
         
