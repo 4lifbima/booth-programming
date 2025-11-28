@@ -1,8 +1,8 @@
 <script setup>
-import Index from './views/Index.vue';
+import MainLayout from './components/MainLayout.vue';
 </script>
 
 <template>
-  <Index />
+  <MainLayout />
 </template>
 
